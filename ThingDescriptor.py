@@ -24,7 +24,29 @@ def thing_descriptor():
                         {
                             "name": "value",
                             "schema": {
-                                 "type": "integer"
+                                 "units": "Celsius",
+                                 "type": "double"
+                            }
+                        }
+                    ]
+                }
+           
+			}
+		
+			},
+               {
+            "pid": "humidity",
+            "monitors": "adapters:AverageHumidity",
+            "read_link": {
+                "href": "/device/{oid}/property/{pid}",
+                "output": {
+                    "type": "object",
+                    "field":[
+                        {
+                            "name": "value",
+                            "schema": {
+                                "units": "percent",
+                                 "type": "double"
                             }
                         }
                     ]
@@ -33,6 +55,7 @@ def thing_descriptor():
 			}
 		
 			}
+
 		
 				
     ],
