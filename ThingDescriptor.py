@@ -54,6 +54,69 @@ def thing_descriptor():
            
 			}
 		
+			},
+               {
+            "pid": "altitude",
+            "monitors": "adapters:AverageHumidity",
+            "read_link": {
+                "href": "/device/{oid}/property/{pid}",
+                "output": {
+                    "type": "object",
+                    "field":[
+                        {
+                            "name": "value",
+                            "schema": {
+                                "units": "meters",
+                                 "type": "double"
+                            }
+                        }
+                    ]
+                }
+           
+			}
+		
+			},
+               {
+            "pid": "gas",
+            "monitors": "adapters:AverageHumidity",
+            "read_link": {
+                "href": "/device/{oid}/property/{pid}",
+                "output": {
+                    "type": "object",
+                    "field":[
+                        {
+                            "name": "value",
+                            "schema": {
+                                "units": "percent",
+                                 "type": "double"
+                            }
+                        }
+                    ]
+                }
+           
+			}
+		
+			},
+               {
+            "pid": "pressure",
+            "monitors": "adapters:AverageHumidity",
+            "read_link": {
+                "href": "/device/{oid}/property/{pid}",
+                "output": {
+                    "type": "object",
+                    "field":[
+                        {
+                            "name": "value",
+                            "schema": {
+                                "units": "hPa",
+                                 "type": "double"
+                            }
+                        }
+                    ]
+                }
+           
+			}
+		
 			}
 
 		
