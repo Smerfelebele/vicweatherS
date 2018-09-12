@@ -1,0 +1,18 @@
+{
+    "credentials": {
+        "agent-id": "680117b1-5147-4748-bece-1fa286151795",
+        "password": "test"
+    },
+    "adapters": [
+        {
+            "adapter-id": "my-weather-station",
+            "active-discovery": false,
+			"endpoint": "http://localhost:5000",
+            "events": {
+                "channels": [],
+                "subscriptions": []
+            }
+
+        }
+    ]
+}
