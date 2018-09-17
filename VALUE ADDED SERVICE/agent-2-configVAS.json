@@ -1,0 +1,24 @@
+{
+    "credentials": {
+        "agent-id": "ea61352e-a3b9-46b9-a5f7-61d7d51c3ea8",
+        "password": "october"
+    },
+    "adapters": [
+        {
+            "adapter-id": "value-added-service-ws",
+            "active-discovery": false,
+			"endpoint": "http://localhost:5001",
+            "events": {
+                "channels": [],
+                "subscriptions": [
+				{
+					"infrastructure-id":"WeatherStationToLampService",
+					"oid":"6dce9627-046e-4728-ba97-312123ed866b",
+					"eid": "weather-station-temperature"
+					
+				}]
+            }
+
+        }
+    ]
+}
