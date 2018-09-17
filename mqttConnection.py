@@ -57,3 +57,4 @@ time.sleep(4)
 #print(weatherSBuffer)
 #print(pressureBuffer)
 #print(humidityBuffer)
+

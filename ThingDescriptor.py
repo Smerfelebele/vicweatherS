@@ -7,7 +7,7 @@ def thing_descriptor():
     "thing-descriptions":[
     {
 
-    "oid": "dc1b778c-2f48-0647-a488-ecfbfbde7a12",
+    "oid": "weatherstation-infrastructure-name",
     "name": "weatherstation",
     "type": "adapters:Thermometer",
 	"version": "0.0.1",
@@ -123,7 +123,22 @@ def thing_descriptor():
 				
     ],
     "actions": [],
-    "events": []
+    "events": [{
+            "eid": "weather-station-temperature",
+            "monitors": "adapters:AmbientTemperature",
+            "output": {
+                "type": "object",
+                "field":[
+                        {
+                            "name": "value",
+                            "schema": {
+                                 "units": "Celsius",
+                                 "type": "double"
+                            }
+                        }
+                    ]
+            }
+        }]
     }
     ]
     }
