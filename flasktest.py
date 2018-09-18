@@ -13,14 +13,21 @@ app_port = 5001
 
 def temperaturePublish():
   while(True):
-    connection=http.client.HTTPConnection("127.0.0.1",port=8181)
-    rheaders={"infrastructure-id":"weatherstation-infrastructure-name","adapter-id":"my-weather-station"}
-    temperature_event={"temperature":data.temperatureBuffer}
-    print(json.dumps(temperature_event))
-    connection.request('PUT','agent/events/weather-station-temperature',headers=rheaders,body=json.dumps(temperature_event))
-    response = connection.getresponse()
-    print(response.status)
-    time.sleep(10)
+    try:
+      connection=http.client.HTTPConnection("127.0.0.1",port=9997)
+      print(connection)
+      rheaders={"infrastructure-id":"weatherstation-infrastructure-name","adapter-id":"my-weather-station"}
+      temperature_event={"temperature":data.temperatureBuffer}
+      j_body=json.dumps(temperature_event)
+      str_body=str(j_body)
+      print(str_body)
+      connection.request(method='PUT',url='/agent/events/weather-station-temperature',body=str_body,headers=rheaders)
+      response = connection.getresponse()
+      print(response.status)
+      time.sleep(10)
+    except:
+      print("Houston mamy problem!!")
+      time.sleep(5)
 
 
 _thread.start_new_thread(temperaturePublish,())
