@@ -10,14 +10,30 @@ adapter_id = "value-added-service-ws"
 #consumption of events
 #popraw jeszcze thing descriptor!
 
-def lamp_property_change(value):
+def lamp_property_change(temp_value):
     connection=http.client.HTTPConnection("127.0.0.1",port=9997)
     print("values")
     rheaders={"infrastructure-id":"WeatherStationToLampService","adapter-id":"value-added-service-ws"}
-    data={"value": "30,30,30"}
-    j_body=json.dumps(data)
-    str_body=str(j_body)
-    print(str_body)
+    if(temp_value>30):
+        data={"value": "0,96,87"}  #red  
+        j_body=json.dumps(data)
+        str_body=str(j_body)
+        print(str_body)
+    elif(temp_value>25 and temp_value<=30):
+        data={"value": "35,96,87"} #orange
+        j_body=json.dumps(data)
+        str_body=str(j_body)
+        print(str_body)
+    elif(temp_value>15 and temp_value<=25):
+        data={"value": "121,96,87"} #green
+        j_body=json.dumps(data)
+        str_body=str(j_body)
+        print(str_body)
+    else:
+        data={"value": "234,96,87"} #blue
+        j_body=json.dumps(data)
+        str_body=str(j_body)
+        print(str_body)         
     connection.request('PUT','/agent/remote/objects/da494aa6-dc83-416c-86c9-8fb2f289274f/properties/WeatherBulb_Color',headers = rheaders, body = str_body)
     response=connection.getresponse()
     print(response)
