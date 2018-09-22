@@ -12,21 +12,24 @@ app_port = 5001
 #oid="weatherstation-infrastructure-name"
 
 def temperaturePublish():
+  previous_temperature=-100
   while(True):
     try:
       connection=http.client.HTTPConnection("127.0.0.1",port=9997)
-      print(connection)
+      #print(connection)
       rheaders={"infrastructure-id":"weatherstation-infrastructure-name","adapter-id":"my-weather-station"}
-      temperature_event={"temperature":data.temperatureBuffer}
-      j_body=json.dumps(temperature_event)
-      str_body=str(j_body)
-      print(str_body)
-      connection.request(method='PUT',url='/agent/events/weather-station-temperature',body=str_body,headers=rheaders)
-      response = connection.getresponse()
-      print(response.status)
-      time.sleep(10)
+      if(data.temperatureBuffer!=previous_temperature):
+        temperature_event={"temperature":data.temperatureBuffer}
+        j_body=json.dumps(temperature_event)
+        str_body=str(j_body)
+        print(str_body)
+        connection.request(method='PUT',url='/agent/events/weather-station-temperature',body=str_body,headers=rheaders)
+        response = connection.getresponse()
+        print(response.status)
+        previous_temperature=data.temperatureBuffer
+        time.sleep(10)
     except:
-      print("Houston mamy problem!!")
+      print("Agent is not started or can't connect to it")
       time.sleep(5)
 
 
